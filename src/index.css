@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.Chat {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgb(233, 243, 252);
+  min-height: 100vh;
+  padding: 15px 10px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.Textbox {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Use 100% width of parent */
+  max-width: 600px;
+  padding: 10px;
+  background: white;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box; /* Ensures padding doesn't overflow */
+  border-radius: 10px;
+}
+.Textbox textarea {
+  flex: 1; /* Takes full width except for the button */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  resize: none; /* Prevents manual resizing */
+  overflow-y: hidden; /* Prevents scrollbar until needed */
+  min-height: 40px; /* Default size */
+  max-height: 120px; /* Limits how much it expands */
+}
+#Send-btn {
+  background: hsl(208, 96%, 43%);
+  border: none;
+  cursor: pointer;
+  margin-left: 20px; /* Moves button inside input */
+  padding: 5px 10px;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  right: 0;
+  border-radius: 50%;
+}
+#Send-btn:hover {
+  color: darkblue;
+}
+
+@media (min-width: 768px) {  /* Tablets */
+  .Chat {
+    width: 70%;  /* Wider layout */
+  }
+}
+
+@media (min-width: 1024px) {  /* Desktops */
+  .Chat {
+    width: 80%;
+  }
+
+  .Textbox {
+    position: absolute;  /* Change from fixed to absolute */
+    left: 0;
+    bottom: 0;
+    width: 100%;  /* Match .Chat's width */
+    max-width: none;  /* Remove the max-width restriction */
+  }
+  }
+
