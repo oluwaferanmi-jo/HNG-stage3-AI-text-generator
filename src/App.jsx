@@ -6,11 +6,15 @@ function App() {
 
 
   return (
-    <div className="flex-row justify-center items-center h-screen bg-gray-200">
-      <p className="Header"><i>Instantly process your messages with CHEQ-AI precision! </i></p>
+    <div className="app-container">
+
+    <p className="Header"><i>Instantly process your messages with CHEQ-AI precision! </i></p>
+
+    <div className="chatwindow w-[100%] max-w-3.7xl mt-0 bg-white shadow-md rounded-md">
+      
       <ChatWindow />
     </div>
-    
+    </div>
   );
 }
 

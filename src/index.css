@@ -8,15 +8,15 @@
 .Chat {
   width: 100%;
   max-width: 600px;
-  background-color: rgb(255, 255, 255);
-  height: 93vh; /* Fixes height to viewport */
-  padding: 15px 10px;
+  background-color: rgb(213, 224, 226);
+  height: 90vh; /* Fixes height to viewport */
   margin: 0 auto;
+  padding: 15px 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   overflow-y: scroll; /* Ensures scrolling works */
-  padding-top: 50px; /* Adjust as needed to prevent cutoff */
+  padding-top: 30px; /* Adjust as needed to prevent cutoff */
 }
 
 .Textbox {
@@ -45,10 +45,28 @@
   max-height: 40px; /* Limits how much it expands */
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .Header{
+  width: 100%;
+  max-width: 47.3rem;  /* Same width as the chat window */
   text-align: center;
-  background-color: rgb(255, 255, 255);
-  border: none;
+  background-color: hsl(219, 49%, 55%); /* Dark gray (adjust as needed) */
+  color: white;
+  margin-bottom: 0;
+  border-radius: 3px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 40px;
+  padding-bottom:10px;
+  padding-top: 10px;
+  
   
 }
 
@@ -62,6 +80,7 @@
   color: rgb(255, 255, 255);
   right: 0;
   border-radius: 50%;
+
 }
 
 #Send-btn:hover {
@@ -89,6 +108,7 @@
   .Chat {
     width: 70%;
     max-width: 800px;  /* Prevents it from being too wide */
+    height: 95vh;
   }
   
   .Textbox {
@@ -104,6 +124,7 @@
   .Chat {
     width: 60%;
     max-width: 900px; /* Keeps it readable */
+    height: 95vh;
   }
 
   .Textbox {
