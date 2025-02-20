@@ -4,11 +4,12 @@
 
 
 
+
 .Chat {
   width: 100%;
   max-width: 600px;
-  background-color: rgb(233, 243, 252);
-  height: 100vh; /* Fixes height to viewport */
+  background-color: rgb(255, 255, 255);
+  height: 93vh; /* Fixes height to viewport */
   padding: 15px 10px;
   margin: 0 auto;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
@@ -28,6 +29,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   margin-top: auto; /* Pushes input to the bottom */
+  min-height: 60px;
 }
 
 .Textbox textarea {
@@ -40,7 +42,14 @@
   resize: none; /* Prevents manual resizing */
   overflow-y: hidden; /* Prevents scrollbar until needed */
   min-height: 40px; /* Default size */
-  max-height: 120px; /* Limits how much it expands */
+  max-height: 40px; /* Limits how much it expands */
+}
+
+.Header{
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  
 }
 
 #Send-btn {
@@ -57,6 +66,22 @@
 
 #Send-btn:hover {
   color: darkblue;
+}
+.TranslateButton {
+  background-color: #2087f4; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  padding: 4px 8px;
+  margin-left: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.TranslateButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Tablet screens */

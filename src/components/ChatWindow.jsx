@@ -68,38 +68,46 @@ const ChatWindow = () => {
     return (
         <div className="Chat">
             {/* Chat Messages */}
+           
             <div className="Messages">
-                {messages.map((msg, index) => (
-                    <div key={index} className="MessageContainer">
-                        <MessageBubble text={msg.text} sender={msg.sender} />
+            {messages.map((msg, index) => (
+    <div key={index} className="MessageContainer">
+        {/* User message in green */}
+        {msg.sender === "user" && (
+            <MessageBubble text={msg.text} sender={msg.sender} />
+        )}
 
-                        {msg.language && <p className="Language">Detected Language: {msg.language}</p>}
+        {/* Language detection */}
+        {msg.language && <p className="Language">Detected Language: {msg.language}</p>}
 
-                        {/* Display Summarized Output */}
-                        {msg.summary && <p className="Summary">Summary: {msg.summary}</p>}
+        {/* Translation section only for user messages */}
+        {msg.sender === "user" && (
+            <div className="TranslateSection">
+                <select
+                    value={selectedLanguage}
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                >
+                    <option value="en">English</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="es">Spanish</option>
+                    <option value="ru">Russian</option>
+                    <option value="tr">Turkish</option>
+                    <option value="fr">French</option>
+                </select>
+                <button className="TranslateButton" onClick={() => handleTranslate(msg.text, index)}>
+                    Translate
+                </button>
+            </div>
+        )}
 
-                        {/* Translate Section */}
-                        <div className="TranslateSection">
-                            <select
-                                value={selectedLanguage}
-                                onChange={(e) => setSelectedLanguage(e.target.value)}
-                            >
-                                <option value="en">English</option>
-                                <option value="pt">Portuguese</option>
-                                <option value="es">Spanish</option>
-                                <option value="ru">Russian</option>
-                                <option value="tr">Turkish</option>
-                                <option value="fr">French</option>
-                            </select>
-                            <button className="TranslateButton" onClick={() => handleTranslate(msg.text, index)}>
-                                Translate
-                            </button>
-                        </div>
+        {/* System-generated translation in blue bubble */}
+        {msg.translation && (
+            <MessageBubble text={msg.translation} sender="system" />
+        )}
+    </div>
+))}
 
-                        {/* Display Translated Output */}
-                        {msg.translation && <p className="Translation">Translation: {msg.translation}</p>}
-                    </div>
-                ))}
+
             </div>
 
             {/* Loading Indicator */}
