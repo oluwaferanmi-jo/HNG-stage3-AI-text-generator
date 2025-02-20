@@ -9,14 +9,14 @@
   width: 100%;
   max-width: 600px;
   background-color: rgb(213, 224, 226);
-  height: 85vh; /* Fixes height to viewport */
+  height: 85vh; 
   margin: 0 auto;
   padding: 15px 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  overflow-y: scroll; /* Ensures scrolling works */
-  padding-top: 30px; /* Adjust as needed to prevent cutoff */
+  overflow-y: scroll; 
+  padding-top: 30px;
 }
 
 .Textbox {
@@ -28,21 +28,21 @@
   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   border-radius: 10px;
-  margin-top: auto; /* Pushes input to the bottom */
+  margin-top: auto; 
   min-height: 60px;
 }
 
 .Textbox textarea {
-  flex: 1; /* Takes full width except for the button */
+  flex: 1;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
   outline: none;
-  resize: none; /* Prevents manual resizing */
-  overflow-y: hidden; /* Prevents scrollbar until needed */
-  min-height: 40px; /* Default size */
-  max-height: 40px; /* Limits how much it expands */
+  resize: none; 
+  overflow-y: hidden;
+  min-height: 40px;
+  max-height: 40px; 
 }
 
 .app-container {
@@ -56,9 +56,9 @@
 
 .Header{
   width: 100%;
-  max-width: 47.3rem;  /* Same width as the chat window */
+  max-width: 47.3rem; 
   text-align: center;
-  background-color: hsl(219, 49%, 55%); /* Dark gray (adjust as needed) */
+  background-color: hsl(219, 49%, 55%); 
   color: white;
   margin-bottom: 0;
   border-radius: 3px;
@@ -74,7 +74,7 @@
   background: hsl(208, 96%, 43%);
   border: none;
   cursor: pointer;
-  margin-left: 20px; /* Moves button inside input */
+  margin-left: 20px; 
   padding: 5px 10px;
   font-size: 18px;
   color: rgb(255, 255, 255);
@@ -87,10 +87,10 @@
   color: darkblue;
 }
 .TranslateButton {
-  background-color: #2087f4; /* Blue background */
-  color: white; /* White text */
+  background-color: #2087f4;
+  color: white; 
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   padding: 4px 8px;
   margin-left: 10px;
   font-size: 14px;
@@ -99,20 +99,20 @@
 }
 
 .TranslateButton:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #0056b3; 
+  transform: scale(1.05); 
 }
 
 /* Tablet screens */
 @media (min-width: 768px) {
   .Chat {
     width: 70%;
-    max-width: 800px;  /* Prevents it from being too wide */
+    max-width: 800px;  
     height: 95vh;
   }
   
   .Textbox {
-    width: 100%; /* Matches chat width */
+    width: 100%; 
     max-width: 800px;
     margin: 0 auto;
     margin-top: auto;
@@ -123,14 +123,14 @@
 @media (min-width: 1024px) {
   .Chat {
     width: 60%;
-    max-width: 900px; /* Keeps it readable */
+    max-width: 900px; 
     height: 95vh;
   }
 
   .Textbox {
     width: 100%;
     max-width: 900px;
-    position: relative; /* Avoids unnecessary absolute positioning */
+    position: relative; 
      margin-top: auto;
   }
 }
