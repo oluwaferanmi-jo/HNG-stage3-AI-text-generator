@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 600px;
   background-color: rgb(213, 224, 226);
-  height: 90vh; /* Fixes height to viewport */
+  height: 85vh; /* Fixes height to viewport */
   margin: 0 auto;
   padding: 15px 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
