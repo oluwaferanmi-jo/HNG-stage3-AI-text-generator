@@ -3,33 +3,33 @@
 @tailwind utilities;
 
 
+
 .Chat {
   width: 100%;
   max-width: 600px;
   background-color: rgb(233, 243, 252);
-  min-height: 100vh;
+  height: 100vh; /* Fixes height to viewport */
   padding: 15px 10px;
   margin: 0 auto;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll; /* Ensures scrolling works */
+  padding-top: 50px; /* Adjust as needed to prevent cutoff */
 }
 
 .Textbox {
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%; /* Use 100% width of parent */
-  max-width: 600px;
+  width: 100%;
   padding: 10px;
   background: white;
   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box; /* Ensures padding doesn't overflow */
+  box-sizing: border-box;
   border-radius: 10px;
+  margin-top: auto; /* Pushes input to the bottom */
 }
+
 .Textbox textarea {
   flex: 1; /* Takes full width except for the button */
   width: 100%;
@@ -42,6 +42,7 @@
   min-height: 40px; /* Default size */
   max-height: 120px; /* Limits how much it expands */
 }
+
 #Send-btn {
   background: hsl(208, 96%, 43%);
   border: none;
@@ -53,27 +54,38 @@
   right: 0;
   border-radius: 50%;
 }
+
 #Send-btn:hover {
   color: darkblue;
 }
 
-@media (min-width: 768px) {  /* Tablets */
+/* Tablet screens */
+@media (min-width: 768px) {
   .Chat {
-    width: 70%;  /* Wider layout */
+    width: 70%;
+    max-width: 800px;  /* Prevents it from being too wide */
+  }
+  
+  .Textbox {
+    width: 100%; /* Matches chat width */
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: auto;
   }
 }
 
-@media (min-width: 1024px) {  /* Desktops */
+/* Desktop screens */
+@media (min-width: 1024px) {
   .Chat {
-    width: 80%;
+    width: 60%;
+    max-width: 900px; /* Keeps it readable */
   }
 
   .Textbox {
-    position: absolute;  /* Change from fixed to absolute */
-    left: 0;
-    bottom: 0;
-    width: 100%;  /* Match .Chat's width */
-    max-width: none;  /* Remove the max-width restriction */
+    width: 100%;
+    max-width: 900px;
+    position: relative; /* Avoids unnecessary absolute positioning */
+     margin-top: auto;
   }
-  }
+}
 
