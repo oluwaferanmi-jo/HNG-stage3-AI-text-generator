@@ -22,7 +22,7 @@ const TextInput = ({ onSend }) => {
       <textarea
         id="Textfield"
         ref={textAreaRef}
-        placeholder="Type a message..."
+        placeholder="Type a message...."
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
