@@ -102,6 +102,21 @@
   background-color: #0056b3; 
   transform: scale(1.05); 
 }
+.SummarizeButton{
+  background-color: #2087f4;
+  color: white; 
+  border: none;
+  border-radius: 10px; 
+  padding: 4px 8px;
+  margin-left: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.SummarizeButton:hover{
+  background-color: #0056b3; 
+  transform: scale(1.05); 
+}
 
 /* Tablet screens */
 @media (min-width: 768px) {
