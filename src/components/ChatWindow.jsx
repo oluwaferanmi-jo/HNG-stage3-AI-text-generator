@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { translateTextLocally, detectLanguage, summarizeText } from "../LocalLanguageUtils";
+import { translateText, detectLanguage, summarizeText } from "../LocalLanguageUtils";
 import TextInput from "./TextInput";
 import MessageBubble from "./MessageBubble";
 
@@ -48,20 +48,48 @@ const ChatWindow = () => {
     };
 
     // Function to translate text
-    const handleTranslate = async (text, index) => {
-        setLoading(true); // Start loading indicator
-        console.log("Translating:", text, "to", selectedLanguage);
-
-        let translation = translateTextLocally(text, selectedLanguage);
-
-        if (translation) {
-            setMessages((prev) =>
-                prev.map((msg, i) => (i === index ? { ...msg, translation } : msg))
-            );
+    const handleTranslate = async (text, index) => { // Add async here
+        if (!text) return;
+        
+        setLoading(true);
+    
+        const detectedLanguageObj = await detectLanguage(text);
+        const detectedLanguage = detectedLanguageObj?.detectedLanguage; // Extract the actual language code
+        
+        if (!detectedLanguage || typeof detectedLanguage !== "string") {
+            console.error("Invalid detected language:", detectedLanguageObj);
+            setLoading(false);
+            return;
         }
-
-        setLoading(false); // Stop loading indicator
+        
+    
+        const supportedLanguages = ["en", "pt", "es", "ru", "tr", "fr"];
+        if (!supportedLanguages.includes(selectedLanguage)) {
+            console.error("Target language not supported:", selectedLanguage);
+            setLoading(false);
+            return;
+        }
+    
+        console.log("Translating from:", detectedLanguage, "to:", selectedLanguage);
+    
+        try {
+            const translatedText = await translateText(text, detectedLanguage, selectedLanguage);
+            if (translatedText) {
+                setMessages((prevMessages) => {
+                    const newMessages = [...prevMessages];
+                    newMessages[index] = { ...newMessages[index], translation: translatedText };
+                    return newMessages;
+                });
+            }
+        } catch (error) {
+            console.error("Translation failed:", error);
+        }
+    
+        setLoading(false);
     };
+    
+    
+    
 
     return (
         <div className="Chat">
@@ -94,8 +122,9 @@ const ChatWindow = () => {
                                     <option value="fr">French</option>
                                 </select>
                                 <button className="TranslateButton" onClick={() => handleTranslate(msg.text, index)}>
-                                    Translate
+                                 Translate
                                 </button>
+
                             </div>
                         )}
 

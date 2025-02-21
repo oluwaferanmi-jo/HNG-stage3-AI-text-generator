@@ -26,21 +26,36 @@ export const detectLanguage = async (text) => {
 };
 
 
-export function translateTextLocally(text, targetLanguage) {
-  console.log("Local translation attempt:", text, "to", targetLanguage);
+export const isTranslationSupported = "ai" in window && "translator" in window.ai;
 
-  const translations = {
-    hello: { es: "hola", fr: "bonjour", pt: "olá", de: "hallo" },
-    goodbye: { es: "adiós", fr: "au revoir", pt: "adeus", de: "auf wiedersehen" },
-    thanks: { es: "gracias", fr: "merci", pt: "obrigado", de: "danke" },
-    yes: { es: "sí", fr: "oui", pt: "sim", de: "ja" },
-    no: { es: "no", fr: "non", pt: "não", de: "nein" },
-    friend: { es: "amigo", fr: "ami", pt: "amigo", de: "freund" },
-    food: { es: "comida", fr: "nourriture", pt: "comida", de: "essen" },
-  };
+export const translateText = async (text, sourceLanguage, targetLanguage) => {
+  if (!isTranslationSupported) {
+      console.warn("Translation API is not supported in this browser.");
+      return null;
+  }
 
-  return translations[text.toLowerCase()]?.[targetLanguage] || `Translation unavailable for "${text}"`;
-}
+  try {
+      const capabilities = await window.ai.translator.capabilities();
+      if (capabilities.available === "no") {
+          console.warn("Translation API is not available.");
+          return null;
+      }
+
+      const translator = await window.ai.translator.create({
+          sourceLanguage: sourceLanguage || "auto", // Auto-detect if not provided
+          targetLanguage: targetLanguage, // Ensure this is defined
+      });
+
+      const translatedText = await translator.translate(text);
+      console.log("Translation Result:", translatedText);
+      return translatedText;
+  } catch (error) {
+      console.error("Error during translation:", error);
+      return null;
+  }
+};
+
+
 
 export const summarizeText = async (text) => {
   try {
